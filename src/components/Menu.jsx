@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
-
+// Options Menu
 const Menu = () => {
   const [showMenuOptions, setShowMenuOptions] = useState(false);
 
@@ -14,23 +14,43 @@ const Menu = () => {
   };
   
   return (
-    <div className='flex gap-3 w-41 bg-gray-50 shadow-xl rounded-lg px-4 py-2'>
+    <div className='flex gap-8 bg-gray-50 shadow-xl rounded-lg px-4 py-2'>
+      {/* Home Link */}
       <Link to={"/"}>
         <span className="text-textColor text-base">Home</span>
       </Link>
-      <div onClick={handleMenuClick}>
-        <span className="text-textColor text-base">Menu</span>
+
+      {/* Menu with dropdown */}
+      <div className="relative">
+        <span 
+          className="text-textColor text-base cursor-pointer"
+          onClick={handleMenuClick}
+        >
+          Menu
+        </span>
+
         {showMenuOptions && (
-          <div onMouseLeave={handleMenuMouseLeave}>
-            <Link to={"/Dishes"}><div className="text-textColor text-base">Dishes</div></Link>
-            <Link to={"/Drinks"}><div className="text-textColor text-base">Drinks</div></Link>
-            <Link to={"/Desserts"}><div className="text-textColor text-base">Desserts</div></Link>
+          <div 
+            className="absolute left-0 mt-2 bg-white shadow-lg rounded-lg"
+            onMouseLeave={handleMenuMouseLeave}
+          >
+            <Link to={"/Dishes"}>
+              <div className="text-textColor text-base px-4 py-2 hover:bg-gray-100">Dishes</div>
+            </Link>
+            <Link to={"/Drinks"}>
+              <div className="text-textColor text-base px-4 py-2 hover:bg-gray-100">Drinks</div>
+            </Link>
+            <Link to={"/Desserts"}>
+              <div className="text-textColor text-base px-4 py-2 hover:bg-gray-100">Desserts</div>
+            </Link>
           </div>
         )}
       </div>
-      <div> 
+
+      {/* About Link */}
+      <Link to={"/about"}>
         <span className="text-textColor text-base">About</span>
-      </div>
+      </Link>
     </div>
   );
 };

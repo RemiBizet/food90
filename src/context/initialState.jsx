@@ -1,7 +1,9 @@
-import { fetchUser } from "../utils/fetchLocalStorageData"
-
-const userInfo = fetchUser();
+/* Initial States */
 
 export const initialState = {
-    user: userInfo,
-}
+    user: null,
+    loginShow: false,
+    confirmOrderShow : false,
+    cartShow: false,
+    cartItems : []
+};

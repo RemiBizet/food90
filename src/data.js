@@ -14,73 +14,75 @@ import dame_blanche from './imgs/dame_blanche.jpg'
 import gauffre from './imgs/gauffre.jpg'
 import tarte from './imgs/tarte.jpeg'
 
-const Dishes = [
+
+// Dummy Data used in this App
+export const Dishes = [
   {
     image: pizza,
     title: 'Pizza',
-    description: 'Delicious Pizza',
+    price: 12.99,
   },
   {
     image: kebab,
     title: 'Kebab',
-    description: 'Succulent Kebab',
+    price: 9.99,
   },
   {
     image: tacos,
     title: 'Tacos',
-    description: 'Tasty Tacos',
+    price: 8.49,
   },
   {
     image: fries,
     title: 'Fries',
-    description: 'Crunchy Fries',
+    price: 3.99,
   },
   {
     image: cheeseball,
     title: 'Cheeseball',
-    description: 'Yummy Cheeseball',
+    price: 5.99,
   },
   {
     image: panini,
     title: 'Panini',
-    description: 'Satisfying Panini',
+    price: 7.49,
   },
 ];
 
-const Drinks = [
+export const Drinks = [
   {
     image: tropico,
     title: 'Tropico',
-    description: 'Refreshing Tropico',
+    price: 2.99,
   },
   {
     image: coca,
     title: 'Coca-Cola',
-    description: 'Classic Coca-Cola',
+    price: 1.99,
   },
   {
     image: sprite,
     title: 'Sprite',
-    description: 'Crisp Sprite',
+    price: 1.99,
   },
 ];
 
-const Desserts = [
+export const Desserts = [
   {
     image: dame_blanche,
     title: 'Dame Blanche',
-    description: 'Decadent Dame Blanche',
+    price: 6.49,
   },
   {
     image: gauffre,
     title: 'Gauffre',
-    description: 'Irresistible Gauffre',
+    price: 4.99,
   },
   {
     image: tarte,
     title: 'Tarte',
-    description: 'Delightful Tarte',
+    price: 5.49,
   },
 ];
 
-export default Dishes, Drinks, Desserts
+

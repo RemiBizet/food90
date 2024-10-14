@@ -1,7 +1,9 @@
 import React, {createContext,useContext,useReducer} from "react";
-import { initialState } from "./initialState";
+
+/* Creating and providing context for App */
 
 export const StateContext = createContext();
+
 export const StateProvider = ({reducer,initialState,children}) =>(
     <StateContext.Provider value={useReducer(reducer,initialState)}>
         {children}

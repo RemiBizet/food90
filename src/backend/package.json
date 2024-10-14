@@ -1,0 +1,24 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "Backend server for handling API requests and interacting with MongoDB",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js",
+        "dev": "nodemon server.js",
+        "build": "echo \"No build step defined for the backend.\"",
+        "test": "echo \"No tests defined\" && exit 0"
+    },
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "cors": "^2.8.5",
+        "express": "^4.17.3",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^6.1.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    },
+    "author": "Your Name",
+    "license": "ISC"
+}

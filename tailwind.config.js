@@ -1,3 +1,5 @@
+const { createUserWithEmailAndPassword } = require('firebase/auth');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -19,6 +21,10 @@ module.exports = {
 
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
+    },
+    colors : {
+      white: "#ffffff",
+      black: "#000000",
     }
   },
   plugins: [],
