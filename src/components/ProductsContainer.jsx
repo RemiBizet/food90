@@ -1,9 +1,12 @@
 import { useStateValue} from "../context/StateProvider";
+import {useState} from "react";
+
 
 // Component displaying the products
 export default function ProductsContainer({products}){
 
   const [{ user }, dispatch] = useStateValue();
+  const [showUserNullPopup, setShowUserNullPopup] = useState(false);
 
   // Adding an item to the cart using username and the wanted item
   const addItemToCart = async (item, username) => {
@@ -16,8 +19,8 @@ export default function ProductsContainer({products}){
         const data = await response.json();
 
         dispatch({
-          type: 'SET_CART_ITEMS',
-          payload: data.cart
+        type: 'SET_CART_ITEMS',
+        payload: data.cart
         });
 
         console.log('Item added to cart:', item);
@@ -46,13 +49,27 @@ export default function ProductsContainer({products}){
                   {/* Add to cart button */}
                   <button
                       className="bg-black text-white px-4 py-2 rounded"
-                      onClick={() => addItemToCart(product, user.username)}
+                      onClick={() => {if (user) addItemToCart(product, user.username); else setShowUserNullPopup(true);}}
                   >
                       Add to Cart
                   </button>
               </div>
           ))}
-      </div>
-  );
 
-}
+        {/* Popup */}
+        {showUserNullPopup && (
+            <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+            <div className="bg-black text-white p-6 rounded shadow">
+                <p>Please log in to add items to your cart!</p>
+                <button
+                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+                onClick={() => setShowUserNullPopup(false)} // Close popup
+                >
+                Close
+                </button>
+            </div>
+            </div>
+        )};
+
+      </div>
+)};
