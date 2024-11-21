@@ -1,4 +1,3 @@
-const { createUserWithEmailAndPassword } = require('firebase/auth');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
