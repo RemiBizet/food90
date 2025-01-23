@@ -1,4 +1,3 @@
-// Backend part handling the database
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -13,7 +12,10 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/food90', {
+// Use environment variable for MongoDB connection
+const mongoUri = process.env.MONGO_URI || 'mongodb://root:example@localhost:27017/food90';
+
+mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
