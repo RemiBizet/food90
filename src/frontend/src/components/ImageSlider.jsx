@@ -6,6 +6,7 @@ import truffle_pasta from '../imgs/truffle_pasta.jpg';
 // Component containing the image slider
 
 const ImageSlider = () => {
+  
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
   const images = [lobster, sushi, truffle_pasta];
@@ -23,13 +24,13 @@ const ImageSlider = () => {
   }, [currentImageIndex]);
 
   return (
-  <div className="relative overflow-hidden">
-      <img
-        src={images[currentImageIndex]}
-        alt="Food Slide"
-        className={`w-100 h-100 transition-opacity duration-500 ease-in-out ${fadeIn ? 'opacity-100' : 'opacity-0'}`}
-      />
-    </div>
+    <div className="relative overflow-hidden">
+        <img
+          src={images[currentImageIndex]}
+          alt="Food Slide"
+          className={`w-100 h-100 transition-opacity duration-500 ease-in-out ${fadeIn ? 'opacity-100' : 'opacity-0'}`}
+        />
+      </div>
   );
 };
 

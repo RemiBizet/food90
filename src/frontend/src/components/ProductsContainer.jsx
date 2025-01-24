@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useStateValue} from "../context/StateProvider";
 
 
@@ -7,6 +7,11 @@ export default function ProductsContainer({products}){
 
     const [{ user }, dispatch] = useStateValue();
     const [showUserNullPopup, setShowUserNullPopup] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        setIsVisible(true);
+    }, []);
 
     // Adding an item to the cart using username and the wanted item
     const addItemToCart = async (item, username) => {
@@ -33,7 +38,7 @@ export default function ProductsContainer({products}){
     return (
         <div className="grid grid-cols-3 gap-4">
             {products.map((product, index) => (
-                <div key={index} className="bg-white p-4 rounded-lg shadow">
+                <div key={index} className={`bg-white p-4 rounded-lg shadow ${isVisible ? 'animate-fade-in-bottom' : 'opacity-0'}`}>
 
                     <img
                         src={product.image}
