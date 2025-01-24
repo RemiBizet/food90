@@ -22,7 +22,7 @@ const MainContainer = () => {
             
                 <Link to="/Dishes">
                     <button
-                        className="mt-4 w-64 bg-black text-white px-6 py-4 text-xl rounded-lg"
+                        className="mt-4 w-64 bg-black text-white px-6 py-4 text-xl rounded-lg transition-colors duration-300 hover:bg-white hover:text-black"
                     >
                         Order Now!
                 </button>
