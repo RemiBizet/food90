@@ -10,8 +10,13 @@ export default function ProductsContainer({products}){
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        setIsVisible(true);
-    }, []);
+        setIsVisible(false); // Reset visibility to trigger the animation again
+        const timeout = setTimeout(() => {
+            setIsVisible(true); // Set visibility to true after a short delay
+        }, 50); // Small delay to ensure the reset is noticeable
+
+        return () => clearTimeout(timeout); // Cleanup the timeout
+    }, [products]); // Dependency array includes `products`
 
     // Adding an item to the cart using username and the wanted item
     const addItemToCart = async (item, username) => {
