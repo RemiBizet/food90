@@ -56,7 +56,7 @@ export default function Header() {
 
     return (
 
-        <header className="fixed z-20 w-screen h-auto p-3 px-4 md:p-6 md:px-16">
+        <header className="fixed z-20 w-screen h-auto p-3 px-4 md:p-6 md:px-16 bg-white">
         {/* Desktop View */}
             <div className="hidden md:flex w-full items-center justify-between mb-4">
 
