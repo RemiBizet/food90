@@ -24,7 +24,7 @@ const ImageSlider = () => {
   }, [currentImageIndex]);
 
   return (
-    <div className="relative overflow-hidden w-[500px] h-[400px]">
+    <div className="relative rounded-lg overflow-hidden w-[500px] h-[400px]">
         <img
           src={images[currentImageIndex]}
           alt="Food Slide"
