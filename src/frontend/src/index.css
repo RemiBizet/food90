@@ -46,6 +46,19 @@ code {
   animation: slideLeft 0.3s ease-out forwards;
 }
 
+.popoutWindow {
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.popoutWindow:hover {
+  transform: scale(1.05);
+}
+
+.popoutWindow:active {
+  transform: scale(0.95);
+}
+
 @keyframes fadeInFromBottom {
   0% {
       opacity: 0;

@@ -16,10 +16,15 @@ module.exports = {
           '0%': { opacity: '1', transform: 'translateY(0)' },
           '100%': { opacity: '0', transform: 'translateY(-20px)' },
         },
+        popout: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.05)' },
+        }
       },
       animation: {
         'fade-in-bottom': 'fadeInFromBottom 1s ease-out',
         'fade-out-top': 'fadeOutToTop 1s ease-out',
+        'popout': 'popout 0.3s ease',
       },
     },
     colors : {

@@ -1,7 +1,7 @@
 import {React, useState, useRef} from "react";
 import Logo from "../imgs/fork_knife.jpg"
 import {motion} from "framer-motion";
-import { MdShoppingBasket, MdLogout} from "react-icons/md";
+import { MdShoppingBasket} from "react-icons/md";
 import default_avatar from '../imgs/default_avatar.jpg'
 import {Link} from "react-router-dom"
 import { useStateValue} from "../context/StateProvider";
@@ -41,12 +41,6 @@ export default function Header() {
         });
     }
     
-    const logout = () => {
-        dispatch({
-            type: actionType.SET_LOGOUT
-        });
-    }
-
     const showCart = () => {
         dispatch({
             type : actionType.SET_CART_SHOW,
