@@ -1,56 +1,85 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
-// Options Menu
-const Menu = () => {
-  const [showMenuOptions, setShowMenuOptions] = useState(false);
+const Menu = ({ onClose }) => {
+  const [activeSubmenu, setActiveSubmenu] = useState(null);
+  const [closeMenuSubmenu, setCloseMenuSubmenu] = useState(false);
 
-  const handleMenuClick = () => {
-    setShowMenuOptions(true);
-  }; 
+  const timeoutRef = useRef(null); // Ref to store the timeout ID
 
-  const handleMenuMouseLeave = () => {
-    if (showMenuOptions) setShowMenuOptions(false);
+  // Handle mouse enter for Menu submenu
+  const handleMenuSubmenuEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current); // Clear the timeout if the mouse re-enters
+    }
+    setActiveSubmenu('menu');
+    setCloseMenuSubmenu(false);
   };
-  
+
+  // Handle mouse leave for Menu submenu with a delay
+  const handleMenuSubmenuLeave = () => {
+    setCloseMenuSubmenu(true);
+    timeoutRef.current = setTimeout(() => {
+      setActiveSubmenu(null); // Hide the submenu after a delay
+      setCloseMenuSubmenu(false);
+    }, 300);
+  };
+
+  const menuItems = {
+    dishes: { label: 'Dishes', path: '/Dishes' },
+    drinks: { label: 'Drinks', path: '/Drinks' },
+    desserts: { label: 'Desserts', path: '/Desserts' },
+  };
+
   return (
-    <div className='flex gap-8 bg-gray-50 shadow-xl rounded-lg px-4 py-2'>
-      {/* Home Link */}
-      <Link to={"/"}>
-        <span className="text-textColor text-base">Home</span>
-      </Link>
-
-      {/* Menu with dropdown */}
-      <div className="relative">
-        <span 
-          className="text-textColor text-base cursor-pointer"
-          onClick={handleMenuClick}
-        >
-          Menu
-        </span>
-
-        {showMenuOptions && (
-          <div 
-            className="absolute left-0 mt-2 bg-white shadow-lg rounded-lg"
-            onMouseLeave={handleMenuMouseLeave}
+    <div className={`fixed top-16 left-0 right-0 bg-white shadow-lg menu-container ${onClose ? 'closing' : ''}`}>
+      <div className="container mx-auto px-4 py-6 flex">
+        {/* Main Menu */}
+        <div className="w-48 space-y-2">
+          <button
+            className="w-full flex items-center gap-2 px-4 py-3 text-black hover:bg-black hover:text-white transition-colors rounded-lg"
           >
-            <Link to={"/Dishes"}>
-              <div className="text-textColor text-base px-4 py-2 hover:bg-gray-100">Dishes</div>
-            </Link>
-            <Link to={"/Drinks"}>
-              <div className="text-textColor text-base px-4 py-2 hover:bg-gray-100">Drinks</div>
-            </Link>
-            <Link to={"/Desserts"}>
-              <div className="text-textColor text-base px-4 py-2 hover:bg-gray-100">Desserts</div>
-            </Link>
-          </div>
-        )}
-      </div>
+            <span className="font-medium">Home</span>
+          </button>
 
-      {/* About Link */}
-      <Link to={"/about"}>
-        <span className="text-textColor text-base">About</span>
-      </Link>
+          {/* Wrap the button and submenu in a single container */}
+          <div
+            onMouseEnter={handleMenuSubmenuEnter}
+            onMouseLeave={handleMenuSubmenuLeave}
+          >
+            <button
+              className="w-full flex items-center gap-2 px-4 py-3 text-black hover:bg-black hover:text-white transition-colors rounded-lg"
+            >
+              <span className="font-medium">Menu</span>
+            </button>
+
+            {/* Submenu */}
+            {activeSubmenu === 'menu' && (
+              <div
+                className={`ml-8 pl-8 border-l submenu ${closeMenuSubmenu ? 'closing' : ''}`}
+              >
+                <div className="space-y-2">
+                  {Object.entries(menuItems).map(([key, { label, path }]) => (
+                    <Link
+                      key={key}
+                      to={path}
+                      className="w-48 flex items-center gap-2 px-4 py-3 text-black hover:bg-black hover:text-white transition-colors rounded-lg"
+                    >
+                      <span className="font-medium">{label}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <button
+            className="w-full flex items-center gap-2 px-4 py-3 text-black hover:bg-black hover:text-white transition-colors rounded-lg"
+          >
+            <span className="font-medium">About</span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

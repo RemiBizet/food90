@@ -16,3 +16,98 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.spin-forward {
+  transform: rotate(360deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.spin-backward {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-container {
+  transform-origin: top;
+  animation: unroll 0.3s ease-out forwards;
+}
+
+.menu-container.closing {
+  animation: rollUp 0.3s ease-out forwards;
+}
+
+.submenu {
+  transform-origin: left;
+  animation: slideRight 0.3s ease-out forwards;
+}
+
+.submenu.closing{
+  transform-origin: right;
+  animation: slideLeft 0.3s ease-out forwards;
+}
+
+@keyframes fadeInFromBottom {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutToTop {
+  0% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+  100% {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+}
+
+@keyframes unroll {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes rollUp {
+  from {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  to {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+}
