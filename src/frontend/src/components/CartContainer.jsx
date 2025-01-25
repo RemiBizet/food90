@@ -103,7 +103,7 @@ const CartContainer = () => {
         <motion.div initial={{opacity: 0, x:200}}
         animate={{opacity: 1, x:0}}
         exit={{opacity: 0, x:200}}
-        className='absolute top-16 z-20 right-0 w-75 h-full bg-black drop-shadow-md flex flex-col rounded-l'>
+        className='absolute top-24 h-[calc(100vh-10rem)] min-h-px[900px] bottom-24 z-10 right-0 w-75 bg-black drop-shadow-md flex flex-col rounded-l'>
             
             <div className='w-full flex items-center justify-between p-4 cursor-pointer'>
 
@@ -117,13 +117,13 @@ const CartContainer = () => {
             </div>
 
             {/* List of items */}
-            <div className='w-full h-full bg-black rounded-t-[2rem] flex flex-col'>
+            <div className='w-full h-full bg-white rounded-l flex flex-col'>
 
                 <div className='w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none'>
 
                     {cartItems && 
                         cartItems.map(item => (
-                            <div key={item.itemId} className='w-full p-1 px-2 rounded-lg bg-cartItem text-white bg-blue flex items-center gap-2'>
+                            <div key={item.itemId} className='w-full p-1 px-2 rounded-lg bg-cartItem text-white flex items-center gap-2'>
                                 <h2 text-white >{item.title}</h2>
                                 <p>{item.price}</p>
                                 <BiMinus onClick={() => removeItemFromCart(item, user.username)}></BiMinus>
