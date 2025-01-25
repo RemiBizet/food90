@@ -8,7 +8,8 @@ import './App.css';
 import {Dishes,Drinks,Desserts} from './data.js';
 import MainContainer from './components/MainContainer';
 import ProductsContainer from './components/ProductsContainer';
-import {AnimatePresence, motion} from "framer-motion";
+import About from './components/About.jsx';
+import {AnimatePresence} from "framer-motion";
 import Header from './components/Header'
 
 export default function App() {
@@ -104,8 +105,7 @@ export default function App() {
           </Routes>
         </main>
 
-
-
+        <About />
       </div>
     </AnimatePresence>
   );
